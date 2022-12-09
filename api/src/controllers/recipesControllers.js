@@ -3,9 +3,9 @@ const { Recipe, Diet } = require("../db");
 
 const getApiRecipes = async () => {
 
-  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02 } = process.env;
+  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02, API_KEY_03 } = process.env;
 
-  const apiData = await fetch(`${ENDPOINT_RECIPES}complexSearch?apiKey=${API_KEY_01}&number=100&offset=100&addRecipeInformation=true`)
+  const apiData = await fetch(`${ENDPOINT_RECIPES}complexSearch?apiKey=${API_KEY_03}&number=100&offset=100&addRecipeInformation=true`)
     .then((response) => response.json())
     .then((data) => data.results.map((element) => {
         return {
@@ -32,11 +32,11 @@ let getDbRecipes = async () => {
   return await Recipe.findAll({
     include: {
       model: Diet,
-      atrributes: ["name"],
+      attributes: ["name"],
       through: {
-        atrributes: [],
-      },
-    },
+        attributes: [],
+      }
+    }
   });
 };
 

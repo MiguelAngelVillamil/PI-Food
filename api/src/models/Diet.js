@@ -9,9 +9,14 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: true,
-        primaryKey: true,
-        unique: true
-      }
+        unique: true,
+      },
+      // Si queremos traer algo de la base de datos lo distinguimos así.
+      createdInDB: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+      },
     },
     {
       timestamps: false,
