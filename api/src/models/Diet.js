@@ -6,24 +6,12 @@ module.exports = (sequelize) => {
   sequelize.define(
     "diet",
     {
-      id: {
-        // UUID: Un ID propio de Sequelize conformado por letras y números.
-        type: DataTypes.UUID,
-        defaultType: DataTypes.UUIDV4,
-        allowNull: true,
-        primaryKey: true,
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: true,
-      },
-
-      // Si queremos traer algo de la base de datos lo distinguimos así.
-      createdInDB: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: true,
-      },
+        primaryKey: true,
+        unique: true
+      }
     },
     {
       timestamps: false,
