@@ -10,14 +10,10 @@ const router = Router();
 router.get("/", async (req, res) => {
   const name = req.query.name
   
-  if(!name) {
-    const recipes = await getAllRecipes();
-    console.log(recipes[0]);
-    res.status(200).send(recipes);
-  }
+  if(!name) res.status(200).json(await getAllRecipes());
   else {
     const recipes = await getAllRecipes();
-    console.log("Entro con name")
+
     let filteredRecipes = recipes.filter((recipe) => recipe.name.toUpperCase().includes(name.toUpperCase()));
 
     if (filteredRecipes.length) res.status(200).send(filteredRecipes);
@@ -57,7 +53,7 @@ router.post("/", async (req, res) => {
 
   const newDiet = await Diet.findAll({
     where: { 
-      name: diet,
+      name: diet
     }
   })
 

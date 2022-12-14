@@ -1,0 +1,44 @@
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  flex: auto;
+}
+
+#diets {
+  padding: auto;;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
+  padding-bottom: 0.5rem;
+
+  width: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card img {
+  border-radius: 0.5rem 0.5rem 0 0;
+  
+  object-fit: cover;
+  width: inherit;
+  
+  aspect-ratio: calc(19/9);
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.card h5 {
+  display: inline;
+  font-size: 0.5rem;
+  margin: 1rem 0.6rem;
+}

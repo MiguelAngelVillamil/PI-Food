@@ -1,0 +1,14 @@
+.cards {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  margin: 1rem;
+  padding: 1rem;
+  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  color: #444;
+  
+  grid-template-columns: repeat(auto-fit, 20rem);
+  gap: 1rem;
+}
