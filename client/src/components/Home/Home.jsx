@@ -6,6 +6,7 @@ import { getRecipes, getDiets } from "../../actions/actions";
 import RecipeCard from "../RecipeCard/RecipeCard";
 
 import PageButtons from "../PageButtons/PageButtons";
+import Navbar from "../Navbar/Navbar";
 import "./Home.css"
 
 export default function Home() {
@@ -41,43 +42,25 @@ export default function Home() {
 
 
   return (
-    <div>
-      <Link to={"/recipe"}>Crear receta</Link>
-      <h1>Comidas/recetas</h1>
+    <div className="container">
 
-      <div>
-        <select>
-          <option value={"asc"}>Ascendente</option>
-          <option value={"dsc"}>Descendente</option>
-        </select>
-
-        <select>
-          <option value={"alf"}>Orden alfabetico</option>
-        </select>
-
-        <select>
-          <option value={"scr"}>Health Score</option>
-        </select>
+      <div className="NavContainer">
+        <Navbar diets={allDiets} />
       </div>
 
-      <div>
-        <select name="Diets">
-          {allDiets?.map((diet, key) => (
-            <option key={key} value={diet.name}>
-              {" "}
-              {diet.name}{" "}
-            </option>
-          ))}
-        </select>
+      
+      <div className="cardsContainer">
+
+        <div className="cards">
+          {currentRecipes?.map(({ id, name, image, diets }) => (
+            <RecipeCard key={id} name={name = name} image={image} diets={diets} />
+            ))}
+        </div>
+
+        <PageButtons pagesNumber={pagesNumber} currentPage={currentPage} changePage={definePage} />
+      
       </div>
 
-      <div className="cards">
-        {currentRecipes?.map(({ id, name, image, diets }) => (
-          <RecipeCard key={id} name={name} image={image} diets={diets} />
-        ))}
-      </div>
-
-      <PageButtons pagesNumber={pagesNumber} currentPage={currentPage} changePage={definePage} />
     </div>
   );
 }

@@ -9,6 +9,7 @@
 
   background: #D1A597 url("./img/Salt&Pepper.png") no-repeat center;
   background-size: cover;
+  background-attachment: fixed;
 
   
 }

@@ -27,9 +27,13 @@ export default function PageButtons({ pagesNumber, currentPage, changePage }) {
         </button>)
       }
 
-      <button onClick={() => handleClick(previousPage)}>
-        {previousPage}
-      </button>
+      {
+        currentPage > 1 &&
+        
+        (<button onClick={() => handleClick(previousPage)}>
+          {previousPage}
+        </button>)
+      }
 
       <button>
         {currentPage}
