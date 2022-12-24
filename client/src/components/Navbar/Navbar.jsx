@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "./Navbar.css";
 
+import { filterByDiet } from "../../actions/actions";
+
 export default function Navbar({diets}) {
+  
+  const dispatch = useDispatch();
+
+  const handleFilterbyDiet = (event) => {
+    dispatch(filterByDiet(event.target.value));
+  }
+  
+  
+  
   return (
     <nav>
       <Link className="link" to={"/home"}>
@@ -9,7 +21,7 @@ export default function Navbar({diets}) {
       </Link>
 
       <label htmlFor="Órden alfabético">
-        <input type="radio" name="typeSelection" /> Órden alfabético
+        <button> Órden alfabético </button>
       </label>
 
       <label htmlFor="Health Score">
@@ -26,7 +38,9 @@ export default function Navbar({diets}) {
         <input type="radio" name="order" /> Descendente
       </label>
 
-      <select>
+      <select defaultValue={"All Diets"} onChange={handleFilterbyDiet}>
+        <option value="All Diets">All Diets</option>
+
         {diets?.map(({ name }, key) => {
           name = name[0].toUpperCase() + name.slice(1);
 

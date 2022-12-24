@@ -3,12 +3,11 @@ nav {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  grid-gap: 30px;
   align-items: flex-start;
   font-size: 1.2rem;
   padding: 0 30px;
 
-  width: 290px;
   max-height: 95vh;
   border-radius: 13px;
   
@@ -24,6 +23,7 @@ nav select {
 .link {
   text-decoration: none;
   color: inherit;
+  padding: 15px;
 }
 
 hr {

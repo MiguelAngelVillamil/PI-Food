@@ -15,3 +15,7 @@ export const getDiets = () => {
     return dispatch({ type: "GET_DIETS", payload: json });
   };
 };
+
+export const filterByDiet = (diet) => {
+  return (dispatch) => dispatch({ type: "FILTER_BY_DIET", payload: diet });
+};

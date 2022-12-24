@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getRecipes, getDiets } from "../../actions/actions";
@@ -19,7 +18,23 @@ export default function Home() {
   useEffect(() => {
     dispatch(getRecipes());
     dispatch(getDiets());
-  }, []);
+  },[]);
+  /////////////////////////////////////////////////////////////
+
+  // FILTERS //////////////////////////////////////////////////
+
+  const [filteredRecipes, setFilteredRecipes] = useState(allRecipes);
+
+  const filterByDiet = useSelector((state) => state.filterByDiet);
+
+  useEffect(() => {
+    
+    filterByDiet === "All Diets" 
+    ? setFilteredRecipes(allRecipes)
+    : setFilteredRecipes(allRecipes.filter(recipe => recipe.diets.some(diet => diet.toLowerCase() === filterByDiet.toLowerCase())))
+    
+  }, [filterByDiet, allRecipes]);
+
   /////////////////////////////////////////////////////////////
 
   // PAGINATION ///////////////////////////////////////////////
@@ -35,9 +50,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-    setCurrentRecipes(allRecipes.slice(actualFirstRecipe(), actualLastRecipe()));
-    setPagesNumber(Math.ceil(allRecipes.length / 9));
-  }, [allRecipes, currentPage]);
+    setCurrentRecipes(filteredRecipes.slice(actualFirstRecipe(), actualLastRecipe()));
+    setPagesNumber(Math.ceil(filteredRecipes.length / 9));
+  }, [filteredRecipes, currentPage]);
   /////////////////////////////////////////////////////////////
 
 
@@ -53,7 +68,7 @@ export default function Home() {
 
         <div className="cards">
           {currentRecipes?.map(({ id, name, image, diets }) => (
-            <RecipeCard key={id} name={name = name} image={image} diets={diets} />
+            <RecipeCard key={id} name={name} image={image} diets={diets} />
             ))}
         </div>
 
