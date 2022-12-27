@@ -29,7 +29,7 @@ router.get("/:idReceta", async (req, res) => {
 
   let filteredRecipe = recipes.filter((recipe) => recipe.id.toString() === idReceta.toString());
 
-  if (filteredRecipe.length) res.status(200).send(filteredRecipe);
+  if (filteredRecipe.length) res.status(200).send(filteredRecipe[0]);
   else res.status(404).send("La receta que estás buscando no existe o ha sido eliminada.");
  
 });

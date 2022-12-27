@@ -1,18 +1,34 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Navbar.css";
 
-import { filterByDiet } from "../../actions/actions";
+import { filterByDiet, setOrderBy, setSearchValue } from "../../actions/actions";
 
 export default function Navbar({diets}) {
   
   const dispatch = useDispatch();
+  const orderBy = useSelector((state) => state.orderBy);
+
+  const handleSearch = (event) => {
+    dispatch(setSearchValue(event.target.value));
+  }
 
   const handleFilterbyDiet = (event) => {
     dispatch(filterByDiet(event.target.value));
   }
   
-  
+  const handleOrder = (type) => {
+
+    let cache = { ...orderBy }
+
+    if (orderBy.type === type) {
+      cache.order = orderBy.order === "asc" ? "dsc" : "asc"
+    }
+
+    if (orderBy.type !== type) cache.type = type
+
+    dispatch(setOrderBy(cache))
+  }
   
   return (
     <nav>
@@ -20,23 +36,13 @@ export default function Navbar({diets}) {
         <h1>Food App</h1>
       </Link>
 
-      <label htmlFor="Órden alfabético">
-        <button> Órden alfabético </button>
-      </label>
+      <input type="text" onChange={handleSearch}/>
+      
+      <button onClick={() => handleOrder("name")}> Órden alfabético </button>
 
-      <label htmlFor="Health Score">
-        <input type="radio" name="typeSelection" /> Health Score
-      </label>
-
+      <button onClick={() => handleOrder("healthScore")}> Health Score </button>
+      
       <hr />
-
-      <label htmlFor="Ascendente">
-        <input type="radio" name="order" /> Ascendente
-      </label>
-
-      <label htmlFor="Descendente">
-        <input type="radio" name="order" /> Descendente
-      </label>
 
       <select defaultValue={"All Diets"} onChange={handleFilterbyDiet}>
         <option value="All Diets">All Diets</option>

@@ -1,20 +1,18 @@
-.infoContainer {
+.recipeInfoContainer {
+  
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  flex: auto;
+  justify-content: center;
+  padding: 5%;
 }
 
-#diets {
+#dietsInfo {
   padding: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 0.6rem;
 }
 
-.card {
+.infoCard {
   position: relative;
 
   background-color: #fff;
@@ -22,24 +20,33 @@
   box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
   padding-bottom: 0.5rem;
 
-  width: 20rem;
-  min-height: 15rem;
+  
 
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.card img {
-  border-radius: 0.5rem 0.5rem 0 0;
-  
+.infoCard h1 {
+  font-size: 3rem;
+  text-align: start;
+  padding: 1rem 3rem;
+}
+
+.infoCard img {
+  border-radius: 1rem;
+  border: solid 3px black;
+
+  margin: 1rem 3rem;
+  max-width: 30rem;
+
   object-fit: cover;
   width: inherit;
-  
+
   aspect-ratio: calc(19/9);
 }
 
-.card h3 {
+.infoCard h3 {
   font-size: 1.2rem;
   margin: 0.5rem 2rem 0.7rem 2rem;
 
@@ -48,7 +55,7 @@
   overflow: hidden;
 }
 
-.card h5 {
+.infoCard h5 {
 
   white-space: nowrap;
 
@@ -62,10 +69,8 @@
   border-radius: 5px;
 }
 
-.card span {
-  position: absolute;
-  top: 0.7rem;
-  left: 0.8rem;
+.infoCard span {
+  
   padding: 0.2rem 0.4rem;
   background-color: white;
   border-radius: 8px;

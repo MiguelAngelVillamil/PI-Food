@@ -2,7 +2,7 @@ const fetch = (url) => import("node-fetch").then(({ default: fetch }) => fetch(u
 const { Recipe, Diet } = require("../db");
 
 const getApiDiets = async () => {
-  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02, API_KEY_03, API_KEY_LUCHO } = process.env;
+  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02, API_KEY_03, API_KEY_04, API_KEY_LUCHO } = process.env;
   
   let diets = await Diet.findAll();
 

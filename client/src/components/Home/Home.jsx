@@ -21,19 +21,65 @@ export default function Home() {
   },[]);
   /////////////////////////////////////////////////////////////
 
-  // FILTERS //////////////////////////////////////////////////
+  // FILTER BY DIET ///////////////////////////////////////////
 
-  const [filteredRecipes, setFilteredRecipes] = useState(allRecipes);
+  const [filteredRecipesByDiet, setFilteredRecipesByDiet] = useState(allRecipes);
 
   const filterByDiet = useSelector((state) => state.filterByDiet);
 
   useEffect(() => {
     
     filterByDiet === "All Diets" 
-    ? setFilteredRecipes(allRecipes)
-    : setFilteredRecipes(allRecipes.filter(recipe => recipe.diets.some(diet => diet.toLowerCase() === filterByDiet.toLowerCase())))
+    ? setFilteredRecipesByDiet(allRecipes)
+    : setFilteredRecipesByDiet(allRecipes.filter(recipe => recipe.diets.some(diet => diet.toLowerCase() === filterByDiet.toLowerCase())))
     
   }, [filterByDiet, allRecipes]);
+
+  /////////////////////////////////////////////////////////////
+
+  // FILTER BY NAME ///////////////////////////////////////////
+
+  const [filteredRecipes, setFilteredRecipes] = useState(filteredRecipesByDiet);
+
+  const searchValue = useSelector(state => state.searchValue);
+
+  const filterByTitle = () => {
+
+    let cache = [ ...filteredRecipesByDiet ];
+
+    cache = cache.filter(recipe => recipe.name.toLowerCase().includes(searchValue.toLowerCase()))
+
+    setFilteredRecipes(cache);
+  }
+
+  useEffect(() => {
+    filterByTitle();
+  }, [searchValue, filteredRecipesByDiet])
+  /////////////////////////////////////////////////////////////
+
+  // ORDER ////////////////////////////////////////////////////
+
+
+  const orderBy = useSelector((state) => state.orderBy);
+
+  const orderByProp = () => {
+    
+    const { type } = orderBy;
+
+    let cache = [ ...filteredRecipes ];
+
+    cache.sort((a, b) => {
+      if(a[type] < b[type]) return orderBy.order === "asc" ? -1 : 1; 
+      if(a[type] > b[type]) return orderBy.order === "asc" ? 1 : -1; 
+      return 0;
+    })
+
+    setFilteredRecipes(cache);
+  }
+
+  useEffect(() => {
+    orderByProp();
+  }, [orderBy])
 
   /////////////////////////////////////////////////////////////
 
@@ -58,24 +104,19 @@ export default function Home() {
 
   return (
     <div className="container">
-
       <div className="NavContainer">
         <Navbar diets={allDiets} />
       </div>
 
-      
       <div className="cardsContainer">
-
         <div className="cards">
-          {currentRecipes?.map(({ id, name, image, diets }) => (
-            <RecipeCard key={id} name={name} image={image} diets={diets} />
-            ))}
+          {currentRecipes?.map(({ id, name, image, diets, healthScore }) => (
+            <RecipeCard key={id} name={name} image={image} diets={diets} healthScore={healthScore} id={id} />
+          ))}
         </div>
 
         <PageButtons pagesNumber={pagesNumber} currentPage={currentPage} changePage={definePage} />
-      
       </div>
-
     </div>
   );
 }

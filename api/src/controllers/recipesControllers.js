@@ -3,7 +3,7 @@ const { Recipe, Diet } = require("../db");
 
 const getApiRecipes = async () => {
 
-  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02, API_KEY_03, API_KEY_LUCHO } = process.env;
+  const { ENDPOINT_RECIPES, API_KEY_01, API_KEY_02, API_KEY_03, API_KEY_04, API_KEY_LUCHO } = process.env;
 
   const apiData = await fetch(`${ENDPOINT_RECIPES}complexSearch?apiKey=${API_KEY_01}&number=100&offset=100&addRecipeInformation=true`)
     .then((response) => response.json())
