@@ -8,7 +8,7 @@ const getApiDiets = async () => {
 
   if(diets.length) return diets;
 
-  const apiData = await fetch(`${ENDPOINT_RECIPES}complexSearch?apiKey=${API_KEY_01}&number=100&offset=100&addRecipeInformation=true`)
+  const apiData = await fetch(`${ENDPOINT_RECIPES}complexSearch?apiKey=${API_KEY_02}&number=100&offset=100&addRecipeInformation=true`)
     .then((response) => response.json())
     .then((data) => data.results.map((element) => element.diets));
 

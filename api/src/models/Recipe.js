@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
     },
     summary: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     healthScore: {
       type: DataTypes.INTEGER,
@@ -29,7 +29,7 @@ module.exports = (sequelize) => {
 
     //Adicional traemos la imagen.
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
 

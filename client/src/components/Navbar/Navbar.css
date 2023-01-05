@@ -1,4 +1,4 @@
-nav {
+.navbar {
   background-color: white;
 
   display: flex;
@@ -10,23 +10,70 @@ nav {
 
   max-height: 95vh;
   border-radius: 13px;
-  
+
   position: sticky;
   top: 20px;
-  margin-left: 20px;  
+  margin-left: 20px;
 }
 
-nav select {
-  font-size: 1.2rem;
+.navbar select {
+  border: 2px solid #CC3E48;
+  border-radius: 8px;
+  padding: 2px 15px;
+  transition: transform 0.1s linear;
 }
 
-.link {
+.navbar .searchbar {
+  width: 100%;
+  border: 2px solid #CC3E48;
+  border-radius: 8px;
+  transform: scale(1);
+  padding: 5px 15px;
+}
+
+.navbar .searchbar:focus {
+  transform: scale(1.05);
+}
+
+.navbar .link {
+  position: relative;
   text-decoration: none;
   color: inherit;
-  padding: 15px;
+  margin: 0 auto;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
-hr {
+.navbar .link::before {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background-color: #CC3E48;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform .2s ease-in-out;
+}
+
+.navbar .link:hover:before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.navbar .title {
+  padding: 15px 0 0 0;
+  font-size: 2rem;
+}
+
+.navbar hr {
   color: black;
   width: -webkit-fill-available;
+}
+
+.navbar button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

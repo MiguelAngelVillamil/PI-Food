@@ -1,4 +1,4 @@
-
+import "./PageButtons.css";
 
 export default function PageButtons({ pagesNumber, currentPage, changePage }) {
   
@@ -10,7 +10,7 @@ export default function PageButtons({ pagesNumber, currentPage, changePage }) {
   }
 
   return (
-    <div>
+    <div className="pagesButtons">
       {
         currentPage > 1 &&
 
@@ -39,9 +39,12 @@ export default function PageButtons({ pagesNumber, currentPage, changePage }) {
         {currentPage}
       </button>
 
-      <button onClick={() => handleClick(nextPage)}>
-        {nextPage}
-      </button>
+      { nextPage <= pagesNumber &&
+
+        <button onClick={() => handleClick(nextPage)}>
+          {nextPage}
+        </button>
+      }
 
       {
         currentPage < pagesNumber &&

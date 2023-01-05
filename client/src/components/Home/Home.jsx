@@ -98,6 +98,10 @@ export default function Home() {
     setCurrentRecipes(filteredRecipes.slice(actualFirstRecipe(), actualLastRecipe()));
     setPagesNumber(Math.ceil(filteredRecipes.length / 9));
   }, [filteredRecipes, currentPage]);
+
+  useEffect(() => {
+    setCurrentPage(1)
+  },[filteredRecipes])
   /////////////////////////////////////////////////////////////
 
 

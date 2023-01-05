@@ -1,0 +1,15 @@
+.pagesButtons {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding-bottom: 1rem;
+}
+
+.pagesButtons button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  background-color: #CC3E48;
+  border: 2px solid #fff;
+  color: #fff;
+}

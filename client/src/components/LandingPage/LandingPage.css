@@ -1,0 +1,44 @@
+.background {
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("../../img/Salt&Pepper.png");
+  background-color: #D1A597;
+  background-size: 110%;
+  background-position-x: -180%;
+
+  text-align: left;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.titlesContainer {
+  width: 28rem;
+
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 0.7rem;
+  margin-left: 6rem;
+}
+
+.landingButton {
+  margin-left: 7rem;
+
+  width: 10rem;
+  padding: 5px 15px;
+  border-radius: 20px;
+
+  color: black;
+  border: 2px solid #CC3E48;
+  background-color: transparent;
+
+  text-align: center;
+  text-decoration: none;
+}
