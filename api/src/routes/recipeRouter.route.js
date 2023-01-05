@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const { getAllRecipes } = require("../controllers/recipesControllers");
-const { Recipe, Diet } = require("../db");
+const { Recipe, Diet, StepByStep } = require("../db");
 
 const router = Router();
 
@@ -39,7 +39,7 @@ router.get("/:idReceta", async (req, res) => {
 // POST METHODS ///////////////////////////////////////////////////////////////////
 
 router.post("/", async (req, res) => {
-  const {id, name, image, summary, healthScore, stepByStep, createdIdDB, diet} = req.body;
+  const {id, name, image, summary, healthScore, stepByStep, createdInDB, diet} = req.body;
 
   const newRecipe = await Recipe.create({
     id,
@@ -47,9 +47,20 @@ router.post("/", async (req, res) => {
     image,
     summary,
     healthScore,
-    stepByStep,
-    createdIdDB,
+    createdInDB,
   });
+
+  stepByStep?.forEach(async step => {
+    
+    const newStep = await StepByStep.create({
+      id,
+      step: step.step,
+      do: step.do
+    })
+
+    await newRecipe.addStepBySteps(newStep);
+  });
+
 
   const newDiet = await Diet.findAll({
     where: { 

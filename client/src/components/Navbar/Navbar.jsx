@@ -36,12 +36,12 @@ export default function Navbar({diets}) {
         <h1>Food App</h1>
       </Link>
 
-      <input type="text" onChange={handleSearch}/>
-      
+      <input type="text" onChange={handleSearch} />
+
       <button onClick={() => handleOrder("name")}> Órden alfabético </button>
 
       <button onClick={() => handleOrder("healthScore")}> Health Score </button>
-      
+
       <hr />
 
       <select defaultValue={"All Diets"} onChange={handleFilterbyDiet}>
@@ -58,7 +58,7 @@ export default function Navbar({diets}) {
         })}
       </select>
 
-      <Link className="link" to={"/recipe"}>
+      <Link className="link" to={"/newRecipe"}>
         Crear receta
       </Link>
     </nav>

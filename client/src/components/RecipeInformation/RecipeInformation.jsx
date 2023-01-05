@@ -7,7 +7,7 @@ import "./RecipeInformation.css";
 export default function RecipeInformation() {
 
   const dispatch = useDispatch(); 
-  const { name, image, summary, healthScore, diets, stepByStep} = useSelector((state) => state.recipe);
+  const { name, image, summary, healthScore, diets, stepByStep, createdInDB } = useSelector((state) => state.recipe);
 
   const { id } = useParams();
 
@@ -15,8 +15,9 @@ export default function RecipeInformation() {
     dispatch(getRecipe(id))
   }, [id])
 
-
+ 
   return (
+  
     <div className="recipeInfoContainer">
 
       <div className="infoCard" >
@@ -35,6 +36,7 @@ export default function RecipeInformation() {
 
           <p>{summary}</p>
 
+        
           <div>
             {stepByStep?.map(step => (
               <div key={step.step}>
@@ -48,5 +50,6 @@ export default function RecipeInformation() {
       </div>
 
     </div>
+ 
   )
 }

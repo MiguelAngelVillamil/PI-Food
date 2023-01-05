@@ -59,7 +59,6 @@ export default function Home() {
 
   // ORDER ////////////////////////////////////////////////////
 
-
   const orderBy = useSelector((state) => state.orderBy);
 
   const orderByProp = () => {
